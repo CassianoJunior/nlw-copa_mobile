@@ -1,4 +1,7 @@
 {
   "compilerOptions": {},
-  "extends": "expo/tsconfig.base"
+  "extends": "expo/tsconfig.base",
+  "paths": {
+    "@env": ["node_modules/react-native-dotenv"] // this mapping is relative to "baseUrl"
+  }
 }
