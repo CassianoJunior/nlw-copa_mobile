@@ -3,7 +3,7 @@ import { Icon, VStack } from 'native-base';
 import { Button } from '../components/Button';
 import { Header } from '../components/Header';
 
-const Pools = () => {
+const Polls = () => {
   return (
     <VStack flex={1} bgColor="gray.900">
       <Header title="Meus bolões" />
@@ -26,4 +26,4 @@ const Pools = () => {
   );
 };
 
-export { Pools };
+export { Polls };

@@ -2,6 +2,7 @@
   "expo": {
     "name": "nlw-copa_mobile",
     "slug": "nlw-copa_mobile",
+    "owner": "cassianojunior",
     "scheme": "nlw-copa_mobile",
     "version": "1.0.0",
     "orientation": "portrait",
