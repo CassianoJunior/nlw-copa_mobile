@@ -3,6 +3,7 @@ import { HStack, useToast, VStack } from 'native-base';
 import { useEffect, useState } from 'react';
 import { Share } from 'react-native';
 import { EmptyMyPollList } from '../components/EmptyMyPollList';
+import { Guesses } from '../components/Guesses';
 import { Header } from '../components/Header';
 import { Loading } from '../components/Loading';
 import { Option } from '../components/Option';
@@ -78,6 +79,9 @@ const Details = () => {
               onPress={() => setOptionSelected('ranking')}
             />
           </HStack>
+          <VStack>
+            <Guesses pollId={poll.id} />
+          </VStack>
         </VStack>
       ) : (
         <EmptyMyPollList code={poll.code} />
