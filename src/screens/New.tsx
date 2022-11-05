@@ -1,10 +1,48 @@
-import { Heading, Text, VStack } from 'native-base';
+import { Heading, Text, useToast, VStack } from 'native-base';
+import { useState } from 'react';
 import Logo from '../assets/logo.svg';
 import { Button } from '../components/Button';
 import { Header } from '../components/Header';
 import { Input } from '../components/Input';
+import { api } from '../services/api';
 
 const New = () => {
+  const [pollTitle, setPollTitle] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const toast = useToast();
+
+  const handlePollCreate = async () => {
+    if (!pollTitle.trim()) {
+      setPollTitle('');
+      return toast.show({
+        title: 'Please enter a title for your poll',
+        placement: 'top',
+        bgColor: 'red.500',
+      });
+    }
+
+    try {
+      setIsLoading(true);
+      const response = await api.post('/polls', { title: pollTitle });
+      toast.show({
+        title: 'Poll created successfully',
+        placement: 'top',
+        bgColor: 'green.500',
+      });
+    } catch (err) {
+      console.log(err);
+      toast.show({
+        title: 'Something went wrong',
+        placement: 'top',
+        bgColor: 'red.500',
+      });
+    } finally {
+      setPollTitle('');
+      setIsLoading(false);
+    }
+  };
+
   return (
     <VStack flex={1} bgColor="gray.900">
       <Header title="Criar novo bolão" />
@@ -20,8 +58,17 @@ const New = () => {
         >
           Crie seu próprio bolão da copa {'\n'} e compartilhe entre amigos!
         </Heading>
-        <Input mb={2} placeholder="Qual nome do seu bolão?" />
-        <Button title="CRIAR MEU BOLÃO" />
+        <Input
+          mb={2}
+          placeholder="Qual nome do seu bolão?"
+          onChangeText={setPollTitle}
+          value={pollTitle}
+        />
+        <Button
+          title="CRIAR MEU BOLÃO"
+          onPress={handlePollCreate}
+          isLoading={isLoading}
+        />
         <Text color="gray.200" fontSize="sm" textAlign="center" px={10} mt={4}>
           Após criar seu bolão, você receberá um código único que poderá usar
           para convidar outras pessoas.
