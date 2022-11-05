@@ -3,7 +3,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { FlatList, Icon, useToast, VStack } from 'native-base';
 import { useCallback, useState } from 'react';
 import { Button } from '../components/Button';
-import { EmptyPoolList } from '../components/EmptyPoolList';
+import { EmptyPollList } from '../components/EmptyPollList';
 import { Header } from '../components/Header';
 import { Loading } from '../components/Loading';
 import { PollCard, PollCardProps } from '../components/PollCard';
@@ -67,11 +67,16 @@ const Polls = () => {
         <FlatList
           data={polls}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <PollCard data={item} />}
+          renderItem={({ item }) => (
+            <PollCard
+              data={item}
+              onPress={() => navigate('details', { id: item.id })}
+            />
+          )}
           px={5}
           showsVerticalScrollIndicator={false}
           _contentContainerStyle={{ pb: 10 }}
-          ListEmptyComponent={() => <EmptyPoolList />}
+          ListEmptyComponent={() => <EmptyPollList />}
         />
       )}
     </VStack>

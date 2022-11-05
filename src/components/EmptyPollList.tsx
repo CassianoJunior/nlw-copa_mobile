@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { Pressable, Row, Text } from 'native-base';
 
-const EmptyPoolList = () => {
+const EmptyPollList = () => {
   const { navigate } = useNavigation();
 
   return (
@@ -37,4 +37,4 @@ const EmptyPoolList = () => {
   );
 };
 
-export { EmptyPoolList };
+export { EmptyPollList };
