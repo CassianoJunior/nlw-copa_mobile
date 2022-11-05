@@ -1,5 +1,5 @@
 import { HStack } from 'native-base';
-import CountryFlag from "react-native-country-flag";
+import CountryFlag from 'react-native-country-flag';
 
 import { Input } from './Input';
 
@@ -9,10 +9,12 @@ interface Props {
   onChangeText: (value: string) => void;
 }
 
-export function Team({ code, position, onChangeText }: Props) {
+const Team = ({ code, position, onChangeText }: Props) => {
   return (
     <HStack alignItems="center">
-      {position === 'left' && <CountryFlag isoCode={code} size={25} style={{ marginRight: 12 }} />}
+      {position === 'left' && (
+        <CountryFlag isoCode={code} size={25} style={{ marginRight: 12 }} />
+      )}
 
       <Input
         w={10}
@@ -23,7 +25,11 @@ export function Team({ code, position, onChangeText }: Props) {
         onChangeText={onChangeText}
       />
 
-      {position === 'right' && <CountryFlag isoCode={code} size={25} style={{ marginLeft: 12 }} />}
+      {position === 'right' && (
+        <CountryFlag isoCode={code} size={25} style={{ marginLeft: 12 }} />
+      )}
     </HStack>
   );
-}
+};
+
+export { Team };

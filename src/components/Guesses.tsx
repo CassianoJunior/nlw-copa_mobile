@@ -1,14 +1,11 @@
 import { Box } from 'native-base';
 
 interface Props {
-  poolId: string;
+  pollId: string;
 }
 
-export function Guesses({ poolId }: Props) {
+const Guesses = ({ pollId }: Props) => {
+  return <Box></Box>;
+};
 
-  return (
-    <Box>
-
-    </Box>
-  );
-}
+export { Guesses };

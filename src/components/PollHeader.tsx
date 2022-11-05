@@ -1,13 +1,13 @@
 import { Heading, HStack, Text, VStack } from 'native-base';
 
-import { PoolPros } from './PoolCard';
 import { Participants } from './Participants';
+import { PollPros } from './PollCard';
 
 interface Props {
-  data: PoolPros;
+  data: PollPros;
 }
 
-export function PoolHeader({ data }: Props) {
+const PoolHeader = ({ data }: Props) => {
   return (
     <HStack
       w="full"
@@ -42,4 +42,6 @@ export function PoolHeader({ data }: Props) {
       />
     </HStack>
   );
-}
+};
+
+export { PoolHeader };

@@ -10,11 +10,11 @@ interface Props {
   showShareButton?: boolean;
 }
 
-export function Header({
+const Header = ({
   title,
   showBackButton = false,
   showShareButton = false,
-}: Props) {
+}: Props) => {
   const { navigate } = useNavigation();
   const EmptyBoxSpace = () => <Box w={6} h={6} />;
 
@@ -47,4 +47,6 @@ export function Header({
       </HStack>
     </HStack>
   );
-}
+};
+
+export { Header };

@@ -6,7 +6,7 @@ interface IconProps extends TouchableOpacityProps {
   icon: React.FC<IconPropsPhosphor>;
 }
 
-export function ButtonIcon({ icon: Icon, ...rest }: IconProps) {
+const ButtonIcon = ({ icon: Icon, ...rest }: IconProps) => {
   const { colors, sizes } = useTheme();
 
   return (
@@ -14,4 +14,6 @@ export function ButtonIcon({ icon: Icon, ...rest }: IconProps) {
       <Icon color={colors.gray[300]} size={sizes[6]} />
     </TouchableOpacity>
   );
-}
+};
+
+export { ButtonIcon };
