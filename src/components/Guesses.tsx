@@ -1,13 +1,15 @@
 import { FlatList, useToast } from 'native-base';
 import { useEffect, useState } from 'react';
 import { api } from '../services/api';
+import { EmptyMyPollList } from './EmptyMyPollList';
 import { Game, GameProps } from './Game';
 
 interface Props {
   pollId: string;
+  code: string;
 }
 
-const Guesses = ({ pollId }: Props) => {
+const Guesses = ({ pollId, code }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [firstTeamPoints, setFirstTeamPoints] = useState('');
@@ -16,7 +18,7 @@ const Guesses = ({ pollId }: Props) => {
 
   const toast = useToast();
 
-  const fecthGames = async () => {
+  const fetchGames = async () => {
     try {
       setIsLoading(true);
       const response = await api.get(`polls/${pollId}/games`);
@@ -58,7 +60,7 @@ const Guesses = ({ pollId }: Props) => {
         placement: 'top',
         bgColor: 'green.500',
       });
-      fecthGames();
+      fetchGames();
     } catch (err) {
       console.log(err);
 
@@ -71,7 +73,7 @@ const Guesses = ({ pollId }: Props) => {
   };
 
   useEffect(() => {
-    fecthGames();
+    fetchGames();
   }, [pollId]);
 
   return (
@@ -86,6 +88,7 @@ const Guesses = ({ pollId }: Props) => {
           onGuessConfirm={() => handleGuessConfirm(item.id)}
         />
       )}
+      ListEmptyComponent={() => <EmptyMyPollList code={code} />}
     />
   );
 };

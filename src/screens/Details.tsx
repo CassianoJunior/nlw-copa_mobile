@@ -80,7 +80,7 @@ const Details = () => {
             />
           </HStack>
           <VStack>
-            <Guesses pollId={poll.id} />
+            <Guesses pollId={poll.id} code={poll.code} />
           </VStack>
         </VStack>
       ) : (

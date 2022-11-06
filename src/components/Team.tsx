@@ -6,10 +6,11 @@ import { Input } from './Input';
 interface Props {
   code: string;
   position: 'left' | 'right';
+  points: number;
   onChangeText: (value: string) => void;
 }
 
-const Team = ({ code, position, onChangeText }: Props) => {
+const Team = ({ code, position, points, onChangeText }: Props) => {
   return (
     <HStack alignItems="center">
       {position === 'left' && (
@@ -23,6 +24,8 @@ const Team = ({ code, position, onChangeText }: Props) => {
         fontSize="xs"
         keyboardType="numeric"
         onChangeText={onChangeText}
+        value={points && points.toString()}
+        isDisabled={!!points}
       />
 
       {position === 'right' && (

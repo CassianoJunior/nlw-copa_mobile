@@ -70,6 +70,7 @@ const Game = ({
           code={data.firstTeamCountryCode}
           position="right"
           onChangeText={setFirstTeamPoints}
+          points={data.guess?.firstTeamPoints}
         />
 
         <X color={colors.gray[300]} size={sizes[6]} />
@@ -78,6 +79,7 @@ const Game = ({
           code={data.secondTeamCountryCode}
           position="left"
           onChangeText={setSecondTeamPoints}
+          points={data.guess?.secondTeamPoints}
         />
       </HStack>
 
